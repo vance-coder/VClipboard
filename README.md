@@ -1,28 +1,28 @@
-# VClipboard
+## VClipboard
 Clipboard manager
 
-    # TODO QListWidgetsItem mouse event monitor 1.double click 2.right click
-    # Done set data to clipboard when mouse double click
-    # Done save history data to disk (json + image)
-    # Done history columns: type, data, time
-    # Done search functionality implement
+## Tasks list
 
-    # Done remove item， remove的时候也保存一次，1.history删除，2. save data删除，3.click board删除回到上一个复制内容？
-    # TODO ctrl 可以进入多选模式，shift可以连续选择
-    # Done 内容倒序
-    # Done 双击贴进剪切板的内容 不再进history list
-    # TODO 当前剪切板内容，给个标识，background或者其他的颜色
+### Features
 
-    # TODO 图片下标处显示item数量
-    # TODO 重构Item，加入更多控件，按钮，状态，时间等
+- [ ] 按住ctrl可以进入多选模式，shift可以连续选择，选择多个item后可以合并item(仅字符可以合并)
+- [ ] 启动后 会自动缩小到systemTray，鼠标点击会弹出窗口，快捷键也会显示窗口
+- [ ] 智能加选，根据用户选择的部分信息，学习内容特征，自动选择选择余下的内容（智能选择，如果是有相同结构的行，则根据行结构选择，否则根据选择的字符串选择）
+- [ ] 置顶功能
+- [ ] 收藏功能
+- [ ] 字符处理面板
+- [ ] 智能搜索，搜索date，phone，email，id，ip，url，link，address
 
-    # TODO Menu,置顶，编辑，删除
+### Interface optimization
+- [ ] 选中当前item后，给个标识，background或者selected mode
+- [ ] 每个item增加时间显示
+- [ ] 允许根据时间来查找历史记录
+- [ ] 字体优化
+- [ ] 界面尺寸优化，界面定位优化
+- [ ] QTextTable 来显示table数据
 
-    # TODO TextEdit 设置缩略文本长度，
-    # TODO SystemTrayIcon
+### Bugfix
+- [ ] 复制excel数据的时候，变成图片，无法使用表格格式（format包含了html但无法转成html）
+- [ ] disabled item后，字体灰色问题
+- [ ] clipboard setHtml到粘贴板后，无法粘贴问题
 
-    # TODO 启动后 会自动缩小到systemTray，鼠标点击会弹出窗口，快捷键也会显示窗口
-
-    # TODO 时间线（根据时间来查找） 右下角显示时间
-
-    # TODO 显示实时网速？

@@ -14,7 +14,6 @@ class FilterType(str, Enum):
     LINK = 'LINK'
     TABLE = 'TABLE'
     CODE = 'CODE'
-    PASSWORD = 'PASSWORD'
     UNKNOWN = 'UNKNOWN'
 
 

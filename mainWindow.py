@@ -96,8 +96,6 @@ class Window(MSFluentWindow):
                                          onClick=lambda: self.switch_type(FilterType.LINK))
         self.navigationInterface.addItem(routeKey='table', icon=FIF.CALENDAR, text='表格',
                                          onClick=lambda: self.switch_type(FilterType.TABLE))
-        self.navigationInterface.addItem(routeKey='password', icon=FIF.HIDE, text='密码',
-                                         onClick=lambda: self.switch_type(FilterType.PASSWORD))
         self.navigationInterface.addItem(routeKey='code', icon=FIF.COMMAND_PROMPT, text='代码',
                                          onClick=lambda: self.switch_type(FilterType.CODE))
 
@@ -160,10 +158,17 @@ class Window(MSFluentWindow):
         # mime_data.setData()
         try:
             if mime_data.hasImage():
-                content['filterType'] = FilterType.IMAGE
-                content['data'] = QPixmap.fromImage(self.clipboard.image())
-                content['dataType'] = DataType.IMAGE
-                content['text'] = ''
+                if mime_data.hasHtml():
+                    # excel data
+                    content['filterType'] = FilterType.TEXT
+                    content['data'] = mime_data.html()
+                    content['dataType'] = DataType.HTML
+                    content['text'] = mime_data.text()
+                else:
+                    content['filterType'] = FilterType.IMAGE
+                    content['data'] = QPixmap.fromImage(self.clipboard.image())
+                    content['dataType'] = DataType.IMAGE
+                    content['text'] = ''
             elif mime_data.hasHtml():
                 content['filterType'] = FilterType.TEXT
                 content['data'] = mime_data.html()
