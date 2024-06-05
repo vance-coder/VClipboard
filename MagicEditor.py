@@ -53,7 +53,7 @@ text = text.strip()
 
 first_row = text.split('\n')[0]
 common_set = set(first_row) & set(space_delimiters + punctuation)
-print(common_set)
+
 last_row_dct = {}
 for row in text.split('\n'):
     # TODO 剪枝策略
@@ -65,18 +65,29 @@ for row in text.split('\n'):
             row_dct.pop(k)
 
     last_row_dct = row_dct
-    print('-' * 20)
+
 
 def find_indices(s, char):
     return [i for i, c in enumerate(s) if c == char]
 
+data = []
+delimiters = list(last_row_dct.keys())
+if '\t' in delimiters:
+    delimiters = ['\t']
+
+elif ' ' in delimiters:
+    delimiters = [' ']
 
 for row in text.split('\n'):
     row_idx = []
-    for ch in last_row_dct.keys():
+
+    for ch in delimiters:
         idx = find_indices(row, ch)
         row_idx += idx
         row_idx += [i + 1 for i in idx]
 
-    print(split_string_by_indices(row, row_idx))
+    data.append(split_string_by_indices(row, row_idx))
     print('-' * 20)
+
+for row in data:
+    print(row)
