@@ -1,5 +1,5 @@
 ## VClipboard
-Clipboard manager
+**Clipboard manager**
 
 ## Tasks list
 

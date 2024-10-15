@@ -62,18 +62,24 @@ class PreviewWindow(QWidget):
 
         self.show()
 
+        # 激活窗口（让窗口提升至最前端）
+        self.activateWindow()
+        self.raise_()
+
     def set_text(self, data):
         if self.item:
             self.vBoxLayout.removeWidget(self.item)
 
         self.item = QTextEdit()
+        self.item.setReadOnly(True)
+        # self.item.clicked.connect(self.close_image)
         if data['dataType'] == DataType.TEXT:
             self.item.setText(data['data'])
         elif data['dataType'] == DataType.HTML:
             self.item.setHtml(data['data'])
         self.vBoxLayout.addWidget(self.item)
 
-        self.setFixedSize(QSize(1080, 960))
+        self.setFixedSize(QSize(860, 680))
 
         # 让窗口置中
         desktop = QApplication.desktop().availableGeometry()
@@ -81,6 +87,10 @@ class PreviewWindow(QWidget):
         self.move(w // 2 - self.width() // 2, h // 2 - self.height() // 2)
 
         self.show()
+
+        # 激活窗口（让窗口提升至最前端）
+        self.activateWindow()
+        self.raise_()
 
     def close_image(self):
         self.hide()
