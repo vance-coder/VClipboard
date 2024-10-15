@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5.QtCore import Qt, pyqtSignal, QSize
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QFont
 from PyQt5.QtWidgets import QWidget, QApplication, QHBoxLayout, QVBoxLayout
 from qfluentwidgets import (MSFluentTitleBar, TransparentToolButton, isDarkTheme, InfoBar,
                             InfoBarPosition, ListWidget, LineEditButton, ComboBox, LineEdit, SearchLineEdit,
@@ -30,6 +30,15 @@ class MainWindow(QWidget):
         # self.setAttribute(Qt.WA_TranslucentBackground)
 
         line_edit = SearchLineEdit(self)
+
+        # Font size
+        fonts = QFont()
+        fonts.setPointSize(14)
+        fonts.setWeight(28)
+        line_edit.setFont(fonts)
+
+        # 设置内置的图标大小
+        line_edit.searchButton.setIconSize(QSize(15, 15))
         line_edit.searchSignal.connect(lambda text: print("搜索：" + text))
         line_edit.setFixedWidth(640)
         line_edit.setFixedHeight(42)
@@ -38,8 +47,8 @@ class MainWindow(QWidget):
         # button = TransparentDropDownToolButton(FluentIcon.MAIL, 'Email')
         button = TransparentDropDownToolButton(QIcon(r'D:\PythonProject\tmp\Jamscreenshot-master\images\1690984151.png'), 'Email')
         button.setIconSize(QSize(52, 52))
-        button.setFixedWidth(52)
-        button.setFixedHeight(52)
+        button.setFixedWidth(62)
+        button.setFixedHeight(58)
         # 创建菜单
         menu = RoundMenu(parent=button)
         menu.addAction(Action(FluentIcon.DOCUMENT, 'Send', triggered=lambda: print("已发送")))
