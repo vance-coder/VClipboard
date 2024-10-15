@@ -45,7 +45,8 @@ class MainWindow(QWidget):
         # line_edit.setClearButtonEnabled(True)
 
         # button = TransparentDropDownToolButton(FluentIcon.MAIL, 'Email')
-        button = TransparentDropDownToolButton(QIcon(r'D:\PythonProject\tmp\Jamscreenshot-master\images\1690984151.png'), 'Email')
+        button = TransparentDropDownToolButton(
+            QIcon(r'D:\PythonProject\tmp\Jamscreenshot-master\images\1690984151.png'), 'Email')
         button.setIconSize(QSize(52, 52))
         button.setFixedWidth(62)
         button.setFixedHeight(58)
@@ -78,11 +79,20 @@ class MainWindow(QWidget):
         # desktop = QApplication.desktop().availableGeometry()
         # w, h = desktop.width(), desktop.height()
         # self.move(w // 2 - self.width() // 2, h // 2 - self.height() // 2)
-        #
         # self.show()
+    def keyReleaseEvent(self, event):
+        if event.key() == Qt.Key_Tab:
+            print('Tab key pressed')
+        else:
+            print(event.key())
 
 
 app = QApplication(sys.argv)
 w = MainWindow()
 w.show()
 app.exec_()
+
+# 1. 监控tab按键
+
+# TODO 自动加载存在的浏览器
+# 加载CMD图标
